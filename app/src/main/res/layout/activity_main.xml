@@ -15,7 +15,6 @@
         android:layout_marginTop="67dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="User Name"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="37dp" />
 

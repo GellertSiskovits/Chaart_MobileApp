@@ -7,11 +7,18 @@
     android:background="@android:color/holo_blue_light"
     tools:context="com.example.gellert.mobileapp.SecondActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="218dp"
-        android:layout_height="170dp"
-        android:text="WELCOME"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="112dp" />
+   <!-- <com.github.mikephil.charting.charts.LineChart -->
+    <!--     android:id="@+id/chart1"-->
+    <!--     android:layout_width="279dp"-->
+    <!--      android:layout_height="432dp"-->
+    <!--     tools:layout_editor_absoluteX="63dp"-->
+    <!--     tools:layout_editor_absoluteY="0dp" /> -->
+
+    <Button
+        android:id="@+id/showData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Data"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="67dp" />
 </android.support.constraint.ConstraintLayout>
