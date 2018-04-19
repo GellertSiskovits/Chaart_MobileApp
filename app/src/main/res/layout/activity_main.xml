@@ -16,7 +16,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="37dp" />
+        tools:layout_editor_absoluteY="37dp"
+        android:textAlignment="center"
+        android:hint="UserName"/>
 
     <EditText
         android:id="@+id/ePass"
@@ -27,7 +29,9 @@
         android:layout_marginTop="19dp"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:hint="Password"/>
 
     <Button
         android:id="@+id/eButton"

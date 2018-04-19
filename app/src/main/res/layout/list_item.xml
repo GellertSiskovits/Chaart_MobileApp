@@ -6,14 +6,6 @@
 
     <!-- Product id (pid) - will be HIDDEN - used to pass to other activity -->
 
-    <TextView
-        android:id="@+id/amount"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:paddingLeft="6dip"
-        android:textSize="17dip"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/pid"
@@ -29,7 +21,20 @@
         android:paddingTop="6dip"
         android:paddingLeft="6dip"
         android:textSize="17dip"
-        android:textStyle="italic" />
+        android:textStyle="bold"
+        android:textColor="#af1524"
+        />
+
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dip"
+        android:paddingLeft="6dip"
+        android:textSize="17dip"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/sum"
@@ -38,7 +43,17 @@
         android:paddingTop="6dip"
         android:paddingLeft="6dip"
         android:textSize="17dip"
-        android:textStyle="bold" />
+        android:textStyle="normal"
+        android:textColor="#214989"/>
+
+    <TextView
+    android:id="@+id/commment"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dip"
+    android:paddingLeft="6dip"
+    android:textSize="17dip"
+    android:textStyle="normal" />
 
 
 

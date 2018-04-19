@@ -109,7 +109,8 @@ public class data_dispaly extends ListActivity {
                         String id = c.getString(TAG_PID);
                         String name = c.getString(TAG_NAME);
                         String category = c.getString(TAG_CAT);
-                        String amount = c.getString(TAG_SUM);
+                        String amount = c.getString(TAG_SUM)+" "+"RON";
+                        String comment = c.getString(TAG_NOTE);
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
 
@@ -118,6 +119,7 @@ public class data_dispaly extends ListActivity {
                         map.put(TAG_NAME, name);
                         map.put(TAG_CAT, category);
                         map.put(TAG_SUM, amount);
+                        map.put(TAG_NOTE, comment);
 
                         // adding HashList to ArrayList
                         productsList.add(map);
@@ -153,8 +155,8 @@ public class data_dispaly extends ListActivity {
                     ListAdapter adapter = new SimpleAdapter(
                             data_dispaly.this, productsList,
                             R.layout.list_item, new String[] { TAG_PID,
-                            TAG_NAME,TAG_CAT,TAG_SUM},
-                            new int[] { R.id.pid, R.id.name,R.id.amount,R.id.sum });
+                            TAG_NAME,TAG_CAT,TAG_SUM,TAG_NOTE},
+                            new int[] { R.id.pid, R.id.name,R.id.amount,R.id.sum,R.id.commment });
                     // updating listview
 
                     setListAdapter(adapter);
