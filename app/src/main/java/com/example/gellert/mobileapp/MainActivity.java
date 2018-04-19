@@ -58,6 +58,6 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Vi
         postData.put("txtPassoword",ePass.getText().toString());
 
         PostResponseAsyncTask task = new PostResponseAsyncTask(this,postData);
-        task.execute("http://192.168.1.8/AndroidApp/Client/login.php");
+        task.execute("http://192.168.1.7/AndroidApp/Client/login.php");
     }
 }

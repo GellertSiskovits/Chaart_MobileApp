@@ -31,13 +31,13 @@ public class data_dispaly extends ListActivity {
 
     JSONArray products = null;
 
-    private static String url_all_products = "http://192.168.1.8/AndroidApp/Data/getAllProducts.php";
+    private static String url_all_products = "http://192.168.1.7/AndroidApp/Data/getAllProducts.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "products";
     private static final String TAG_PID = "ExpenseId";
     private static final String TAG_NAME = "expense_date";
-    private static final String TAG_DATE = "expense_date";
+    private static final String TAG_SUM = "expense_amount";
     private static final String TAG_NOTE = "expense_note";
     private static final String TAG_CAT = "expense_category";
 
@@ -109,6 +109,7 @@ public class data_dispaly extends ListActivity {
                         String id = c.getString(TAG_PID);
                         String name = c.getString(TAG_NAME);
                         String category = c.getString(TAG_CAT);
+                        String amount = c.getString(TAG_SUM);
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
 
@@ -116,6 +117,7 @@ public class data_dispaly extends ListActivity {
                         map.put(TAG_PID, id);
                         map.put(TAG_NAME, name);
                         map.put(TAG_CAT, category);
+                        map.put(TAG_SUM, amount);
 
                         // adding HashList to ArrayList
                         productsList.add(map);
@@ -151,8 +153,8 @@ public class data_dispaly extends ListActivity {
                     ListAdapter adapter = new SimpleAdapter(
                             data_dispaly.this, productsList,
                             R.layout.list_item, new String[] { TAG_PID,
-                            TAG_NAME,TAG_CAT},
-                            new int[] { R.id.pid, R.id.name });
+                            TAG_NAME,TAG_CAT,TAG_SUM},
+                            new int[] { R.id.pid, R.id.name,R.id.amount,R.id.sum });
                     // updating listview
 
                     setListAdapter(adapter);
