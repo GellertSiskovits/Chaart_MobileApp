@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">MobileApp</string>
     <string name="title_activity_data_new">data_new</string>
+    <string-array name="category_names">
+        <item>Grocery</item>
+        <item>Travel</item>
+        <item>Foods</item>
+        <item>Travel</item>
+        <item>Holiday</item>
+        <item>Clohing</item>
+        <item>Accesorries</item>
+        <item>Entertainment</item>
+        <item>Gifts</item>
+    </string-array>
 </resources>

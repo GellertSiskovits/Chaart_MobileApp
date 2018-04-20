@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    >
 
     <!-- Product id (pid) - will be HIDDEN - used to pass to other activity -->
 
@@ -22,7 +23,8 @@
         android:paddingLeft="6dip"
         android:textSize="17dip"
         android:textStyle="bold"
-        android:textColor="#af1524"
+        android:textColor="#ffffff"
+        android:background="#356dae"
         />
 
 
@@ -43,8 +45,8 @@
         android:paddingTop="6dip"
         android:paddingLeft="6dip"
         android:textSize="17dip"
-        android:textStyle="normal"
-        android:textColor="#214989"/>
+        android:textStyle="bold"
+        android:textColor="#13356b"/>
 
     <TextView
     android:id="@+id/commment"
@@ -53,7 +55,8 @@
     android:paddingTop="6dip"
     android:paddingLeft="6dip"
     android:textSize="17dip"
-    android:textStyle="normal" />
+    android:textStyle="italic"
+        android:textColor="#13356b"/>
 
 
 

@@ -23,7 +23,8 @@
         <activity
             android:name=".data_new"
             android:label="@string/title_activity_data_new"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NewEntryActivity"></activity>
     </application>
 
 </manifest>

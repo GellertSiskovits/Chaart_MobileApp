@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gellert.mobileapp.NewEntryActivity"
+    android:background="#4a92de">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="190dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Create New Entry"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="39dp"
+        android:background="#13356b"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
+
+    <Spinner
+        android:id="@+id/categories_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="24dp"
+        android:autofillHints="Category"
+        android:background="#ffffff" />
+
+    <EditText
+        android:id="@+id/inputdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dp_datepicker"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:padding="9dip"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/inputamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categories_spinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="number"
+        android:padding="9dip"
+        android:textAlignment="center" />
+
+    <DatePicker
+        android:id="@+id/dp_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addItem"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ffffff"
+        android:datePickerMode="spinner"
+        android:padding="0dip"
+        android:scaleX="0.9"
+        android:scaleY="0.95" />
+
+    <Button
+        android:id="@+id/addItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Register" />
+
+</RelativeLayout>

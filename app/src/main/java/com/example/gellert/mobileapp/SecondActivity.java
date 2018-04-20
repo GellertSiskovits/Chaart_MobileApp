@@ -31,6 +31,7 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     Button showData;
+    Button newData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,21 @@ public class SecondActivity extends AppCompatActivity {
         //Button
 
         showData = (Button) findViewById(R.id.showData);
-
+        newData =(Button) findViewById(R.id.newData);
         //showData Button Click
 
         showData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), data_dispaly.class);
+                startActivity(i);
+            }
+        });
+
+        newData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), NewEntryActivity.class);
                 startActivity(i);
             }
         });

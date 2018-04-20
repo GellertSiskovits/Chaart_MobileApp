@@ -5,7 +5,8 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gellert.mobileapp.data_dispaly">
+    tools:context="com.example.gellert.mobileapp.data_dispaly"
+    android:background="#4a92de">
 
     <ListView
         android:id="@android:id/list"
