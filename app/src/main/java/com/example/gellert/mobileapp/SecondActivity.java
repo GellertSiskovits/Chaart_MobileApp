@@ -16,9 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.*;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
+
 import com.github.mikephil.charting.data.*;
 
 import org.json.JSONObject;
@@ -32,6 +30,7 @@ public class SecondActivity extends AppCompatActivity {
 
     Button showData;
     Button newData;
+    Button chartButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ public class SecondActivity extends AppCompatActivity {
 
         showData = (Button) findViewById(R.id.showData);
         newData =(Button) findViewById(R.id.newData);
+        chartButton= findViewById(R.id.chartbutton);
         //showData Button Click
 
         showData.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +56,14 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), NewEntryActivity.class);
+                startActivity(i);
+            }
+        });
+
+        chartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), chart.class);
                 startActivity(i);
             }
         });

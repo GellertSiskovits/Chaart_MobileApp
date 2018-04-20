@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,6 +18,10 @@
         android:id="@+id/showData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/newData"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/newData"
+        android:layout_marginTop="46dp"
         android:text="Show Data"
         tools:layout_editor_absoluteX="126dp"
         tools:layout_editor_absoluteY="67dp" />
@@ -26,9 +30,21 @@
         android:id="@+id/newData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/showData"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:text="New Entry"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="145dp" />
 
+    <Button
+        android:id="@+id/chartbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newData"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="CHART" />
 
-</LinearLayout>
+
+</RelativeLayout>
