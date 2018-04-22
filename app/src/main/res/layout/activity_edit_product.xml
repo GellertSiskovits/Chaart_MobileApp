@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gellert.mobileapp.EditProductActivity">
+
+    <EditText
+        android:id="@+id/edit_textView"
+        android:layout_width="190dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#13356b"
+        android:text="Edit Entry"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="39dp" />
+
+    <Spinner
+        android:id="@+id/edit_categories_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_inputdesc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp"
+        android:autofillHints="Category"
+        android:background="#ffffff" />
+
+    <EditText
+        android:id="@+id/edit_inputdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_inputamount"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:padding="9dip"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/edit_inputamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_dp_datepicker"
+        android:layout_alignLeft="@+id/edit_inputdesc"
+        android:layout_alignStart="@+id/edit_inputdesc"
+        android:layout_marginBottom="16dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="number"
+        android:padding="9dip"
+        android:textAlignment="center" />
+
+    <DatePicker
+        android:id="@+id/edit_dp_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editbtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ffffff"
+        android:datePickerMode="spinner"
+        android:padding="0dip"
+        android:scaleX="0.9"
+        android:scaleY="0.95" />
+
+    <Button
+        android:id="@+id/editbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_inputamount"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/edit_inputamount"
+        android:text="UPDATE" />
+
+    <Button
+        android:id="@+id/deletebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/editbtn"
+        android:layout_toRightOf="@+id/editbtn"
+        android:text="DELETE" />
+
+</RelativeLayout>

@@ -25,7 +25,8 @@
             android:label="@string/title_activity_data_new"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NewEntryActivity" />
-        <activity android:name=".chart"></activity>
+        <activity android:name=".chart" />
+        <activity android:name=".EditProductActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
@@ -60,9 +61,37 @@ public class data_dispaly extends ListActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // getting values from selected ListItem
+                String pid = ((TextView) view.findViewById(R.id.pid)).getText()
+                        .toString();
 
+                // Starting new intent
+                Intent in = new Intent(getApplicationContext(),
+                        EditProductActivity.class);
+                // sending pid to next activity
+                Log.d("PID-DISPALYDATA: ", pid);
+                in.putExtra("pid", pid);
+
+                // starting new activity and expecting some response back
+                startActivityForResult(in, 100);
             }
         });
+    }
+
+    // Response from Edit Product Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // if result code 100
+        if (resultCode == 100) {
+            // if result code 100 is received
+            // means user edited/deleted product
+            // reload this screen again
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+
     }
 
     class LoadAllProducts extends AsyncTask<String, String, String> {

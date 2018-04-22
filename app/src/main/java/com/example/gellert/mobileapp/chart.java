@@ -10,12 +10,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
@@ -44,28 +55,30 @@ public class chart extends AppCompatActivity {
     private static final String TAG_NOTE = "expense_note";
     private static final String TAG_CAT = "expense_category";
 
+    HashMap<Integer,String> labelMap;
 
-    BarChart barChart;
-    BarDataSet dataSet;
-    BarData data;
+    LineChart barChart ;
+    LineDataSet dataSet;
+    LineData data;
 
-    ArrayList<BarEntry> entries;
+    List<Entry> entries;
     ArrayList<String> labels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_dispaly);
+        setContentView(R.layout.activity_chart);
+        barChart = (LineChart) findViewById(R.id.linechart);
+        barChart.setDragEnabled(true);
+        barChart.setScaleEnabled(false);
 
-        barChart = new BarChart(this);
-        setContentView(barChart);
 
-
-        entries = new ArrayList<BarEntry>();
+        entries = new ArrayList<Entry>();
         labels = new ArrayList<String>();
         //load data -> Background Thread
 
         new LoadAllProducts().execute();
+
 
     }
 
@@ -107,17 +120,13 @@ public class chart extends AppCompatActivity {
                     // products found
                     // Getting Array of Products
                     products = json.getJSONArray(TAG_PRODUCTS);
-
+                    labelMap = new HashMap<>();
                     // looping through All Products
+                    int index = 1;
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
-
-                        // Storing each json item in variable
-                        String id = c.getString(TAG_PID);
                         String name = c.getString(TAG_NAME);
-                        String category = c.getString(TAG_CAT);
                         String amount = c.getString(TAG_SUM) ;
-                        String comment = c.getString(TAG_NOTE);
                         // creating new HashMap
                         ArrayList<BarEntry> entries1 = new ArrayList<>();
                         ArrayList<String> labels1 = new ArrayList<>();
@@ -127,11 +136,16 @@ public class chart extends AppCompatActivity {
 //                        map.put(TAG_CAT, category);
 //                        map.put(TAG_SUM, amount);
 //                        map.put(TAG_NOTE, comment);
-                        entries1.add(new BarEntry(4f, Integer.parseInt(amount)));
-                        labels1.add(name);
+                        entries.add(new Entry( Integer.parseInt(amount),Integer.parseInt(amount)));
+                        labelMap.put(index,name);
+                        index++;
+                        Log.d("amount: ",amount);
+                        Log.d("date: ", name);
+                        labels.add(name);
                         // adding HashList to ArrayList
-                        entries = (entries1);
-                        labels = labels1;
+
+
+
                     }
                 } else {
                     // no products found
@@ -145,6 +159,14 @@ public class chart extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Log.d("FINAL ENTRIES:", entries.toString());
+            Log.d("FINAL LABELS:", labels.toString());
+
+            dataSet = new LineDataSet(entries, "Expenses");
+            data = new LineData(dataSet);
+
+
+
 
             return null;
         }
@@ -158,13 +180,26 @@ public class chart extends AppCompatActivity {
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {
-//                   /* *//**
-//                     * Updating parsed JSON data into ListView
-//                     * *//*
-                    dataSet = new BarDataSet(entries, "#");
-                    data = new BarData(labels, dataSet);
-                    // updating listview
-                    System.out.print("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYyy");
+//
+
+                    Log.d("FINAL ENTRIES:", entries.toString());
+                    Log.d("FINAL LABELS:", labels.toString());
+
+                    barChart.setData(data);
+                   // setContentView(barChart);
+                    barChart.invalidate();
+//                    final String[] strings = labels.toArray(new String[]);
+//                    IAxisValueFormatter formatter = new IAxisValueFormatter() {
+//                        @Override
+//                        public String getFormattedValue(float value, AxisBase axis) {
+//                            return strings[(int)value];
+//                        }
+//
+//
+//                    };
+//                    XAxis xAxis = barChart.getXAxis();
+//                    xAxis.setGranularity(1f);
+//                    xAxis.setValueFormatter(formatter);
 
 
                 }
