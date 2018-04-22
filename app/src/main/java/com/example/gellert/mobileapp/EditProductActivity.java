@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -63,6 +64,15 @@ public class EditProductActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_product);
 
+        ArrayAdapter<CharSequence> adapter;
+        category = findViewById(R.id.edit_categories_spinner);
+        adapter = ArrayAdapter.createFromResource(this,R.array.category_names,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(adapter);
+
+
+
+
         update = findViewById(R.id.editbtn);
         delete = findViewById(R.id.deletebtn);
 
@@ -75,14 +85,14 @@ public class EditProductActivity extends Activity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //new UpdateProduct().execute();
+                new UpdateProduct().execute();
             }
         });
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // new DeleteProduct().execute()
+                 new DeleteProduct().execute();
             }
         });
     }
@@ -173,7 +183,7 @@ public class EditProductActivity extends Activity {
 
 
                         int year = Integer.parseInt(
-                                product.getString(TAG_DATE).substring(0, 3)
+                                product.getString(TAG_DATE).substring(0, 4)
                         );
 
                         int month = Integer.parseInt(
@@ -181,9 +191,9 @@ public class EditProductActivity extends Activity {
                         );
 
                         int day = Integer.parseInt(
-                                product.getString(TAG_DATE).substring(8, 9)
+                                product.getString(TAG_DATE).substring(8, 10)
                         );
-
+                        Log.d("DATE:", year + "-" + month + "-" + day);
                         date.init(year, month, day, null);
 
                         desciprion.setText(product.getString(TAG_DESCRIPTION));
@@ -197,10 +207,11 @@ public class EditProductActivity extends Activity {
 
             });
         }
+    }
 
         //-------------------------
 
-        class SaveProductDetails extends AsyncTask<String, String, String> {
+        class UpdateProduct extends AsyncTask<String, String, String> {
 
             /**
              * Before starting background thread Show Progress Dialog
@@ -261,5 +272,66 @@ public class EditProductActivity extends Activity {
 
             //----------------------------
         }
+
+    class DeleteProduct extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(EditProductActivity.this);
+            pDialog.setMessage("Deleting Product...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        /**
+         * Deleting product
+         * */
+        protected String doInBackground(String... args) {
+
+            // Check for success tag
+            int success;
+            try {
+                // Building Parameters
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("pid", pid));
+
+                // getting product details by making HTTP request
+                JSONObject json = jsonParser.makeHttpRequest(
+                        url_delete_product, "POST", params);
+
+                // check your log for json response
+                Log.d("Delete Product", json.toString());
+
+                // json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    // product successfully deleted
+                    // notify previous activity by sending code 100
+                    Intent i = getIntent();
+                    // send result code 100 to notify about product deletion
+                    setResult(100, i);
+                    finish();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once product deleted
+            pDialog.dismiss();
+
+        }
+
     }
-}
+    }

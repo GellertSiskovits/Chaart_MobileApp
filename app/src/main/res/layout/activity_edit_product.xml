@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.gellert.mobileapp.EditProductActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/edit_textView"
         android:layout_width="190dp"
         android:layout_height="35dp"
@@ -24,10 +24,10 @@
         android:id="@+id/edit_categories_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_inputdesc"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="23dp"
+        android:layout_below="@+id/edit_textView"
+        android:layout_marginTop="18dp"
         android:autofillHints="Category"
         android:background="#ffffff" />
 
@@ -51,7 +51,6 @@
         android:layout_above="@+id/edit_dp_datepicker"
         android:layout_alignLeft="@+id/edit_inputdesc"
         android:layout_alignStart="@+id/edit_inputdesc"
-        android:layout_marginBottom="16dp"
         android:background="#ffffff"
         android:ems="10"
         android:hint="Amount"

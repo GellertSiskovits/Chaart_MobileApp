@@ -2,6 +2,7 @@ package com.example.gellert.mobileapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,9 +25,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
@@ -70,7 +70,7 @@ public class chart extends AppCompatActivity {
         setContentView(R.layout.activity_chart);
         barChart = (LineChart) findViewById(R.id.linechart);
         barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(false);
+        barChart.setScaleEnabled(true);
 
 
         entries = new ArrayList<Entry>();
@@ -122,7 +122,7 @@ public class chart extends AppCompatActivity {
                     products = json.getJSONArray(TAG_PRODUCTS);
                     labelMap = new HashMap<>();
                     // looping through All Products
-                    int index = 1;
+                    int index = 0;
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
                         String name = c.getString(TAG_NAME);
@@ -136,7 +136,7 @@ public class chart extends AppCompatActivity {
 //                        map.put(TAG_CAT, category);
 //                        map.put(TAG_SUM, amount);
 //                        map.put(TAG_NOTE, comment);
-                        entries.add(new Entry( Integer.parseInt(amount),Integer.parseInt(amount)));
+                        entries.add(new Entry(Integer.parseInt(amount),index));
                         labelMap.put(index,name);
                         index++;
                         Log.d("amount: ",amount);
@@ -163,7 +163,10 @@ public class chart extends AppCompatActivity {
             Log.d("FINAL LABELS:", labels.toString());
 
             dataSet = new LineDataSet(entries, "Expenses");
-            data = new LineData(dataSet);
+            dataSet.setDrawCubic(true);
+            dataSet.setDrawFilled(true);
+            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            data = new LineData(labels,dataSet);
 
 
 
@@ -176,7 +179,7 @@ public class chart extends AppCompatActivity {
          **/
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting all products
-            pDialog.dismiss();
+
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -200,7 +203,7 @@ public class chart extends AppCompatActivity {
 //                    XAxis xAxis = barChart.getXAxis();
 //                    xAxis.setGranularity(1f);
 //                    xAxis.setValueFormatter(formatter);
-
+                    pDialog.dismiss();
 
                 }
             });
